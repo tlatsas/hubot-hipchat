@@ -35,7 +35,7 @@ class HipChat extends Adapter
   send: (envelope, strings...) ->
 
     target_jid = @extractJid(envelope)
-      
+
     if not target_jid
       return @logger.error "ERROR: Not sure who to send to: envelope=#{inspect envelope}"
 
@@ -56,10 +56,10 @@ class HipChat extends Adapter
 
     params =
       url: "#{@room_endpoint}/#{room_id}/notification"
-      headers : 
+      headers:
         'content-type' : 'text/html'
       auth:
-        bearer : @options.token
+        bearer: @options.token
       body: fullMsg
 
     requestLib.post params, (err,resp,body) =>
@@ -109,7 +109,7 @@ class HipChat extends Adapter
   sendMultipart: (path, name, data, mimeType, msg) ->
 
     # Must have filename="name" etc... in double quotes not single
-    quotedName = '"' + name + '"' 
+    quotedName = '"' + name + '"'
     params =
       method: 'POST'
       url: path 
@@ -132,7 +132,7 @@ class HipChat extends Adapter
     requestLib params, (err, resp, body) =>
           if resp.statusCode >= 400
             return @logger.error "HipChat API errror: #{resp.statusCode}"
-            
+
 
   topic: (envelope, message) ->
 

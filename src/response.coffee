@@ -2,10 +2,10 @@
 
 class HipChatResponse extends Response
 
-	sendFile: (file_info) ->
-		@robot.adapter.sendFile(@envelope, file_info)
+    sendFile: (file_info) ->
+        @robot.adapter.sendFile(@envelope, file_info)
 
-	sendHtml: (strings...) ->
-		@robot.adapter.sendHtml(@envelope, strings...)
+    sendHtml: (strings...) ->
+        @robot.adapter.sendHtml(@envelope, strings...)
 
 module.exports = HipChatResponse
